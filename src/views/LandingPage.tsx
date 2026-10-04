@@ -9,11 +9,11 @@ import {
   BarChart3,
   Award,
   Zap,
-  BookOpen,
   HelpCircle,
   TrendingUp,
 } from 'lucide-react';
 import { AIOrb } from '../components/AIOrb';
+import { Floating3DDecor } from '../components/Floating3DDecor';
 
 interface LandingPageProps {
   onStartLearning: () => void;
@@ -88,22 +88,26 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
   return (
     <div className="relative overflow-hidden">
-      {/* Background Ambience */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-b from-pink-600/15 via-purple-600/5 to-transparent blur-[120px] pointer-events-none -z-10" />
+      {/* Background Ambience & 3D Depth */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[650px] bg-gradient-to-b from-pink-600/12 via-purple-600/5 to-transparent blur-[130px] pointer-events-none -z-10" />
+      <div className="absolute top-20 right-10 w-96 h-96 bg-white/[0.03] rounded-full blur-[90px] pointer-events-none -z-10" />
 
       {/* Hero Section */}
       <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24 lg:pt-20 lg:pb-32">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        {/* Subtle floating 3D wireframes */}
+        <Floating3DDecor variant="hero" reducedMotion={reducedMotion} className="opacity-70" />
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center relative z-10">
           {/* Hero Copy */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-300 text-xs font-semibold backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/20 text-slate-200 text-xs font-semibold backdrop-blur-md shadow-sm">
               <Sparkles className="w-3.5 h-3.5 text-pink-400 animate-pulse" />
               <span>Next-Gen AI Learning Companion</span>
             </div>
 
             <div className="space-y-3">
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.08]">
-                VIVORA <span className="bg-gradient-to-r from-pink-400 via-rose-400 to-amber-300 bg-clip-text text-transparent">AI</span>
+                PREPVEXA <span className="bg-gradient-to-r from-pink-400 via-rose-300 to-amber-200 bg-clip-text text-transparent">AI</span>
               </h1>
               <p className="text-xl sm:text-2xl font-bold tracking-tight text-pink-300/90 font-mono">
                 Practice. Perform. Progress.
@@ -117,7 +121,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
               <button
                 onClick={onStartLearning}
-                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600 text-white font-bold text-sm shadow-xl shadow-pink-500/30 hover:shadow-pink-500/50 hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 group"
+                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600 text-white font-bold text-sm shadow-xl shadow-pink-500/25 hover:shadow-pink-500/40 hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 group"
               >
                 <span>Start Learning</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -143,7 +147,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               </div>
               <div>
                 <p className="text-2xl font-extrabold text-emerald-400">O(1)</p>
-                <p className="text-xs text-slate-400">Exam Preparation Speed</p>
+                <p className="text-xs text-slate-400">Exam Prep Speed</p>
               </div>
             </div>
           </div>
@@ -152,25 +156,25 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           <div className="lg:col-span-5 flex items-center justify-center relative">
             <div className="relative">
               <AIOrb size={440} reducedMotion={reducedMotion} className="mx-auto" />
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-white/10 text-[11px] text-slate-300 backdrop-blur-md shadow-xl flex items-center gap-2 whitespace-nowrap">
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-white/20 text-[11px] text-slate-200 backdrop-blur-md shadow-xl flex items-center gap-2 whitespace-nowrap">
                 <span className="w-2 h-2 rounded-full bg-pink-400 animate-ping" />
-                <span>Interactive Neural Particle Sphere · Drag or hover</span>
+                <span>Interactive 3D Neural Sphere · Drag or hover</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* The Core VIVORA Learning Loop */}
-      <section id="loop" className="py-20 border-y border-white/[0.08] bg-[#0c0e16]/60 relative">
+      {/* The Core PREPVEXA Learning Loop */}
+      <section id="loop" className="py-20 border-y border-white/[0.1] bg-[#0c0e16]/80 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-pink-400">The VIVORA Methodology</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-pink-400">The PREPVEXA Methodology</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
               The Scientific AI Learning Loop
             </h2>
-            <p className="text-sm sm:text-base text-slate-400">
-              Traditional study creates an illusion of competence. VIVORA turns passive reading into an active, iterative engine of mastery.
+            <p className="text-sm sm:text-base text-slate-300">
+              Traditional study creates an illusion of competence. PREPVEXA AI turns passive reading into an active, iterative engine of mastery.
             </p>
           </div>
 
@@ -180,16 +184,16 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               return (
                 <div
                   key={item.step}
-                  className="p-6 rounded-2xl glass-panel relative group hover:border-pink-500/40 transition-all duration-300"
+                  className="p-6 rounded-2xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] border border-white/15 relative group hover:border-pink-500/40 transition-all duration-300 depth-3d-card"
                 >
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-mono font-bold px-2 py-1 rounded bg-white/[0.06] text-slate-300">
+                    <span className="text-xs font-mono font-bold px-2 py-1 rounded bg-white/[0.1] text-white">
                       {item.step}
                     </span>
                     <Icon className={`w-5 h-5 ${item.color} group-hover:scale-110 transition-transform`} />
                   </div>
                   <h3 className="text-base font-bold text-white mb-1.5">{item.title}</h3>
-                  <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
+                  <p className="text-xs text-slate-300 leading-relaxed">{item.desc}</p>
                 </div>
               );
             })}
@@ -197,31 +201,33 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         </div>
       </section>
 
-      {/* Feature Showcase Grid */}
-      <section id="features" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+      {/* Feature Showcase Grid with White Specular Surface Depth */}
+      <section id="features" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <Floating3DDecor variant="minimal" reducedMotion={reducedMotion} className="opacity-40" />
+
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3 relative z-10">
           <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Feature Suite</span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
             Engineered for Serious Academic Performance
           </h2>
-          <p className="text-sm sm:text-base text-slate-400">
+          <p className="text-sm sm:text-base text-slate-300">
             From quick conceptual triage to rigorous timed exam dress rehearsals.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
           {features.map((feat, i) => {
             const Icon = feat.icon;
             return (
               <div
                 key={i}
-                className={`p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 ${feat.accent}`}
+                className={`p-6 rounded-2xl border transition-all duration-300 depth-3d-card ${feat.accent}`}
               >
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-slate-900/80 border border-white/10 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-white/[0.08] border border-white/20 flex items-center justify-center">
                     <Icon className={`w-5 h-5 ${feat.iconColor}`} />
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 px-2 py-0.5 rounded bg-black/40">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-300 px-2 py-0.5 rounded bg-white/[0.06] border border-white/10">
                     {feat.tag}
                   </span>
                 </div>
@@ -233,12 +239,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         </div>
       </section>
 
-      {/* Why VIVORA Comparison */}
-      <section id="how-it-works" className="py-20 border-t border-white/[0.08] bg-[#0c0e16]/40">
+      {/* Why PREPVEXA Comparison with Crisp White High-Contrast Card */}
+      <section id="how-it-works" className="py-20 border-t border-white/[0.1] bg-[#0c0e16]/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-5 space-y-4">
-              <span className="text-xs font-bold uppercase tracking-widest text-amber-400">Why VIVORA</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-amber-400">Why PREPVEXA AI</span>
               <h2 className="text-3xl font-extrabold text-white tracking-tight">
                 Not another generic flashcard app.
               </h2>
@@ -246,7 +252,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 Generic chatbots hallucinate and give surface answers. Standard quiz apps test random trivia without tracking root weaknesses.
               </p>
               <p className="text-sm text-slate-300 leading-relaxed">
-                VIVORA pairs server-side Gemini intelligence with an exam simulation engine that diagnoses the exact theorems, concepts, and time crunches holding your score back.
+                PREPVEXA AI pairs server-side Gemini intelligence with an exam simulation engine that diagnoses the exact theorems, concepts, and time crunches holding your score back.
               </p>
               <div className="pt-2">
                 <button
@@ -260,9 +266,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </div>
 
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-5 rounded-2xl bg-slate-900/60 border border-rose-500/20 space-y-3">
+              <div className="p-6 rounded-2xl bg-slate-900/80 border border-rose-500/25 space-y-3 depth-3d-card">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-rose-400">Traditional Preparation</h4>
-                <ul className="space-y-2.5 text-xs text-slate-400">
+                <ul className="space-y-3 text-xs text-slate-400">
                   <li className="flex items-start gap-2">
                     <span className="text-rose-400 font-bold">✕</span>
                     <span>Passive rereading of textbook chapters without retrieval practice</span>
@@ -278,9 +284,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 </ul>
               </div>
 
-              <div className="p-5 rounded-2xl bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-transparent border border-pink-500/35 space-y-3">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-pink-400">VIVORA AI System</h4>
-                <ul className="space-y-2.5 text-xs text-slate-200">
+              <div className="p-6 rounded-2xl bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-transparent border border-pink-500/35 space-y-3 depth-3d-card">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-pink-400">PREPVEXA AI System</h4>
+                <ul className="space-y-3 text-xs text-slate-200">
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                     <span>AI-generated high-yield question sets tailored to your weakness topics</span>
@@ -303,18 +309,18 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       {/* CTA Section */}
       <section className="py-20 relative text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-pink-500/15 via-rose-500/10 to-purple-500/15 border border-pink-500/30 glass-glow-pink">
+          <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-pink-500/15 via-white/[0.04] to-purple-500/15 border border-white/20 glass-glow-pink relative overflow-hidden">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-3">
               Ready to Upgrade Your Exam Score?
             </h2>
             <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto mb-6">
-              Join thousands of students turning stressful study sessions into confident, methodical exam mastery.
+              Join students turning stressful study sessions into confident, methodical exam mastery.
             </p>
             <button
               onClick={onStartLearning}
               className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600 text-white font-bold text-sm shadow-xl shadow-pink-500/30 hover:brightness-110 active:scale-[0.98] transition-all inline-flex items-center gap-2"
             >
-              <span>Launch VIVORA 1.0</span>
+              <span>Launch PREPVEXA AI</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -322,16 +328,16 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/[0.08] py-10 bg-[#07080c] text-xs text-slate-400">
+      <footer className="border-t border-white/[0.1] py-10 bg-[#07080c] text-xs text-slate-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <Sparkles className="w-4 h-4 text-pink-400" />
-            <span className="font-bold text-white">VIVORA AI 1.0</span>
+            <span className="font-bold text-white">PREPVEXA AI</span>
             <span className="text-slate-500">·</span>
             <span>Practice. Perform. Progress.</span>
           </div>
           <p className="text-slate-500">
-            © {new Date().getFullYear()} VIVORA AI. High-Performance Learning Infrastructure.
+            © {new Date().getFullYear()} PREPVEXA AI. High-Performance Learning Infrastructure.
           </p>
         </div>
       </footer>

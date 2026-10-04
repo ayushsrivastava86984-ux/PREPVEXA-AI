@@ -125,7 +125,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       {/* 4 Core KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* KPI 1: Study Streak */}
-        <div className="p-5 rounded-2xl glass-panel relative group hover:border-amber-500/40 transition-all">
+        <div className="p-5 rounded-2xl glass-panel relative group hover:border-amber-500/40 transition-all depth-3d-card">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-medium text-slate-400">Study Streak</span>
             <div className="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
@@ -140,7 +140,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         </div>
 
         {/* KPI 2: Quiz Accuracy */}
-        <div className="p-5 rounded-2xl glass-panel relative group hover:border-emerald-500/40 transition-all">
+        <div className="p-5 rounded-2xl glass-panel relative group hover:border-emerald-500/40 transition-all depth-3d-card">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-medium text-slate-400">Quiz Accuracy</span>
             <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
@@ -155,7 +155,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         </div>
 
         {/* KPI 3: Completed Exams */}
-        <div className="p-5 rounded-2xl glass-panel relative group hover:border-pink-500/40 transition-all">
+        <div className="p-5 rounded-2xl glass-panel relative group hover:border-pink-500/40 transition-all depth-3d-card">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-medium text-slate-400">Completed Exams</span>
             <div className="w-8 h-8 rounded-lg bg-pink-500/10 border border-pink-500/20 flex items-center justify-center">
@@ -170,7 +170,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         </div>
 
         {/* KPI 4: Total Study Time */}
-        <div className="p-5 rounded-2xl glass-panel relative group hover:border-purple-500/40 transition-all">
+        <div className="p-5 rounded-2xl glass-panel relative group hover:border-purple-500/40 transition-all depth-3d-card">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-medium text-slate-400">Total Study Time</span>
             <div className="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
@@ -337,7 +337,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               {studyPlan.tasks.slice(0, 4).map((task) => (
                 <div
                   key={task.id}
-                  className={`p-3.5 rounded-xl border transition-all ${
+                  className={`p-3.5 rounded-xl border transition-all depth-3d-card ${
                     task.isCompleted
                       ? 'bg-slate-900/30 border-white/[0.04] opacity-60'
                       : 'bg-slate-900/70 border-white/[0.08] hover:border-purple-500/30'

@@ -46,13 +46,13 @@ export const AIOrb: React.FC<AIOrbProps> = ({
     const sphereRadius = size * 0.36;
     const particles: Particle3D[] = [];
 
-    // Distinctive VIVORA colors: Pink for AI, Light Pink, Subtle Cyan/Green, Yellow highlight
+    // Distinctive PREPVEXA AI colors: Crisp White highlights, Soft Pink/Rose, Emerald Green, Warm Yellow
     const palette = [
-      { color: '#ec4899', glow: 'rgba(236, 72, 153, 0.7)' }, // Pink
-      { color: '#f472b6', glow: 'rgba(244, 114, 182, 0.6)' }, // Light pink
-      { color: '#e879f9', glow: 'rgba(232, 121, 249, 0.6)' }, // Magenta
-      { color: '#22c55e', glow: 'rgba(34, 197, 94, 0.5)' },   // Green
-      { color: '#eab308', glow: 'rgba(234, 179, 8, 0.6)' },    // Yellow
+      { color: '#ffffff', glow: 'rgba(255, 255, 255, 0.85)' }, // Pure White highlight
+      { color: '#f472b6', glow: 'rgba(244, 114, 182, 0.65)' }, // Soft Rose/Pink
+      { color: '#ec4899', glow: 'rgba(236, 72, 153, 0.6)' },  // Vibrant Pink
+      { color: '#34d399', glow: 'rgba(52, 211, 153, 0.55)' },  // Emerald Green
+      { color: '#fbbf24', glow: 'rgba(251, 191, 36, 0.6)' },   // Warm Yellow
     ];
 
     // Distribute particles across sphere using Fibonacci lattice
@@ -255,18 +255,24 @@ export const AIOrb: React.FC<AIOrbProps> = ({
         }}
       />
 
-      {/* Orbit Rings */}
+      {/* Orbit Rings with White Specular Edge */}
       <div
-        className={`absolute rounded-full border border-pink-500/20 pointer-events-none transition-transform duration-1000 ${
-          reducedMotion ? '' : 'animate-[spin_28s_linear_infinite]'
+        className={`absolute rounded-full border border-white/20 pointer-events-none transition-transform duration-1000 ${
+          reducedMotion ? '' : 'animate-[spin_36s_linear_infinite]'
         }`}
-        style={{ width: size * 0.76, height: size * 0.76 }}
+        style={{ width: size * 0.82, height: size * 0.82 }}
       />
       <div
-        className={`absolute rounded-full border border-violet-500/15 pointer-events-none transition-transform duration-1000 ${
-          reducedMotion ? '' : 'animate-[spin_42s_linear_infinite_reverse]'
+        className={`absolute rounded-full border border-pink-500/25 pointer-events-none transition-transform duration-1000 ${
+          reducedMotion ? '' : 'animate-[spin_28s_linear_infinite_reverse]'
         }`}
-        style={{ width: size * 0.9, height: size * 0.9 }}
+        style={{ width: size * 0.72, height: size * 0.72 }}
+      />
+      <div
+        className={`absolute rounded-full border border-white/10 pointer-events-none transition-transform duration-1000 ${
+          reducedMotion ? '' : 'animate-[spin_48s_linear_infinite]'
+        }`}
+        style={{ width: size * 0.94, height: size * 0.94 }}
       />
 
       <canvas

@@ -456,7 +456,7 @@ export const DEFAULT_ACHIEVEMENTS: Achievement[] = [
     id: 'ach_first_quiz',
     slug: 'first-quiz',
     title: 'First Step',
-    description: 'Complete your first practice quiz on VIVORA AI.',
+    description: 'Complete your first practice quiz on PREPVEXA AI.',
     badgeIcon: 'Award',
     category: 'quiz',
     requiredValue: 1,

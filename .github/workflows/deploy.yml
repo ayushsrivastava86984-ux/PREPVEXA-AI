@@ -1,4 +1,4 @@
-name: Deploy VIVORA AI to GitHub Pages
+name: Deploy PREPVEXA AI to GitHub Pages
 
 on:
   push:

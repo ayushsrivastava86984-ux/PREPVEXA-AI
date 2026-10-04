@@ -85,11 +85,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
             <div className="flex flex-col">
               <div className="flex items-center gap-1.5">
-                <span className="text-lg font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
-                  VIVORA
+                <span className="text-lg font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-white bg-clip-text text-transparent">
+                  PREPVEXA
                 </span>
                 <span className="text-xs font-semibold px-1.5 py-0.5 rounded bg-pink-500/15 text-pink-400 border border-pink-500/30">
-                  AI 1.0
+                  AI
                 </span>
               </div>
               <span className="text-[10px] tracking-wider text-slate-400 uppercase font-medium hidden sm:inline-block">

@@ -53,7 +53,7 @@ export const MaterialsView: React.FC<MaterialsViewProps> = ({ subjects }) => {
     // Generate a simple text blob simulating downloading the material
     const blob = new Blob(
       [
-        `VIVORA AI Study Material\nTitle: ${mat.title}\nSubject: ${mat.subjectName}\nSummary: ${
+        `PREPVEXA AI Study Material\nTitle: ${mat.title}\nSubject: ${mat.subjectName}\nSummary: ${
           mat.aiSummary || 'No AI summary generated yet'
         }\nExported: ${new Date().toISOString()}`,
       ],

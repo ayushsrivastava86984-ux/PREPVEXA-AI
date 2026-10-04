@@ -118,7 +118,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLoginSu
             <Sparkles className="w-6 h-6" />
           </div>
           <h2 className="text-2xl font-extrabold text-white tracking-tight">
-            {mode === 'login' && 'Sign in to VIVORA AI'}
+            {mode === 'login' && 'Sign in to PREPVEXA AI'}
             {mode === 'signup' && 'Create Student Account'}
             {mode === 'forgot' && 'Reset Your Password'}
             {mode === 'reset' && 'Set New Password'}
@@ -225,7 +225,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLoginSu
                 <span className="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
               ) : (
                 <>
-                  {mode === 'login' && 'Sign In to VIVORA'}
+                  {mode === 'login' && 'Sign In to PREPVEXA AI'}
                   {mode === 'signup' && 'Create Student Account'}
                   {mode === 'forgot' && 'Send Recovery Instructions'}
                   {mode === 'reset' && 'Update Password'}

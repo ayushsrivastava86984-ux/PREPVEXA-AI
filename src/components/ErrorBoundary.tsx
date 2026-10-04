@@ -21,7 +21,7 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('[VIVORA AI] Uncaught runtime error:', error, errorInfo);
+    console.error('[PREPVEXA AI] Uncaught runtime error:', error, errorInfo);
   }
 
   private handleReset = () => {
@@ -43,7 +43,7 @@ export class ErrorBoundary extends Component<Props, State> {
             <div>
               <div className="flex items-center justify-center gap-1.5 text-xs font-bold text-pink-400 uppercase tracking-wider mb-1">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>VIVORA AI System Recovery</span>
+                <span>PREPVEXA AI System Recovery</span>
               </div>
               <h2 className="text-xl font-bold text-white tracking-tight">
                 Something encountered an unexpected error

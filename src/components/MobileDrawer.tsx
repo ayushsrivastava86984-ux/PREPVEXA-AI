@@ -60,7 +60,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
               <Sparkles className="w-4 h-4 text-pink-400" />
             </div>
             <div>
-              <p className="text-sm font-bold text-white">VIVORA AI</p>
+              <p className="text-sm font-bold text-white">PREPVEXA AI</p>
               <p className="text-[10px] text-pink-400 font-semibold tracking-wide">PRACTICE · PERFORM · PROGRESS</p>
             </div>
           </div>

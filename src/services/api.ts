@@ -158,7 +158,7 @@ export const ApiService = {
           topic: 'Full Timed Exam Simulation',
           durationMinutes: Math.min(payload.dailyAvailableMinutes, 60),
           taskType: 'Exam Simulator',
-          recommendedAction: 'Take a 20-minute timed exam session in VIVORA.',
+          recommendedAction: 'Take a 20-minute timed exam session in PREPVEXA AI.',
         },
       ],
     };

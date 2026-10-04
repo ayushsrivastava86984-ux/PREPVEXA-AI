@@ -55,7 +55,7 @@ export const AITutorView: React.FC<AITutorViewProps> = ({ subjects }) => {
         {
           id: 'welcome_msg',
           role: 'assistant',
-          content: `Hello! I am your **VIVORA AI Study Tutor** specialized in **${selectedSubject}**.\n\nHow can I help you excel today? You can ask me to explain a concept, walk through an example, summarize high-yield exam takeaways, or generate a practice question.`,
+          content: `Hello! I am your **PREPVEXA AI Study Tutor** specialized in **${selectedSubject}**.\n\nHow can I help you excel today? You can ask me to explain a concept, walk through an example, summarize high-yield exam takeaways, or generate a practice question.`,
           timestamp: new Date().toISOString(),
         },
       ],
@@ -281,7 +281,7 @@ export const AITutorView: React.FC<AITutorViewProps> = ({ subjects }) => {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="text-sm font-bold text-white">VIVORA AI Study Tutor</h2>
+                <h2 className="text-sm font-bold text-white">PREPVEXA AI Study Tutor</h2>
                 <span className="text-[10px] font-semibold px-2 py-0.2 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
                   gemini-3.8-flash
                 </span>
