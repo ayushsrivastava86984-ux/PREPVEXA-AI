@@ -1,0 +1,6 @@
+{
+  "name": "VIVORA AI",
+  "description": "Intelligent AI-powered learning and exam preparation platform. Practice. Perform. Progress.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
