@@ -92,86 +92,85 @@ export const Floating3DDecor: React.FC<Floating3DDecorProps> = ({
           s.rotZ += s.rotSpeedZ;
         }
 
-        const fov = 350;
-        const scale = fov / (fov + s.z);
-        const px = cx + s.x * scale;
-        const py = cy + s.y * scale;
-        const currentSize = s.size * scale;
+        try {
+          const fov = 350;
+          const scale = Math.max(0.1, fov / (fov + s.z));
+          const px = cx + s.x * scale;
+          const py = cy + s.y * scale;
+          const currentSize = Math.max(2, s.size * scale);
 
-        ctx.save();
-        ctx.translate(px, py);
-        ctx.shadowColor = s.glow;
-        ctx.shadowBlur = s.isWhiteHighlight ? 12 : 8;
+          ctx.save();
+          ctx.translate(px, py);
+          ctx.shadowColor = s.glow;
+          ctx.shadowBlur = s.isWhiteHighlight ? 12 : 8;
 
-        if (s.type === 'octahedron') {
-          // Render glass wireframe octahedron
-          const cos = Math.cos(s.rotY);
-          const sin = Math.sin(s.rotY);
-          const top = -currentSize * 1.3;
-          const bottom = currentSize * 1.3;
-          const r = currentSize * 0.9;
+          if (s.type === 'octahedron') {
+            const cos = Math.cos(s.rotY);
+            const top = -currentSize * 1.3;
+            const bottom = currentSize * 1.3;
+            const r = currentSize * 0.9;
 
-          ctx.strokeStyle = s.color;
-          ctx.lineWidth = s.isWhiteHighlight ? 1.4 : 1.0;
+            ctx.strokeStyle = s.color;
+            ctx.lineWidth = s.isWhiteHighlight ? 1.4 : 1.0;
 
-          // Connect top vertex to base
-          ctx.beginPath();
-          ctx.moveTo(0, top);
-          ctx.lineTo(r * cos, 0);
-          ctx.lineTo(0, bottom);
-          ctx.lineTo(-r * cos, 0);
-          ctx.closePath();
-          ctx.stroke();
-
-          // Connect cross ring
-          ctx.beginPath();
-          ctx.ellipse(0, 0, r * Math.abs(cos), r * 0.35, 0, 0, Math.PI * 2);
-          ctx.stroke();
-
-          // White center specular glint
-          if (s.isWhiteHighlight) {
-            ctx.fillStyle = '#ffffff';
             ctx.beginPath();
-            ctx.arc(0, 0, 2.5 * scale, 0, Math.PI * 2);
+            ctx.moveTo(0, top);
+            ctx.lineTo(r * cos, 0);
+            ctx.lineTo(0, bottom);
+            ctx.lineTo(-r * cos, 0);
+            ctx.closePath();
+            ctx.stroke();
+
+            const radX = Math.max(0.5, r * Math.abs(cos));
+            const radY = Math.max(0.5, r * 0.35);
+            ctx.beginPath();
+            ctx.ellipse(0, 0, radX, radY, 0, 0, Math.PI * 2);
+            ctx.stroke();
+
+            if (s.isWhiteHighlight) {
+              ctx.fillStyle = '#ffffff';
+              ctx.beginPath();
+              ctx.arc(0, 0, Math.max(1, 2.5 * scale), 0, Math.PI * 2);
+              ctx.fill();
+            }
+          } else if (s.type === 'ring') {
+            ctx.strokeStyle = s.color;
+            ctx.lineWidth = 1.2;
+            const ringX = Math.max(1, currentSize * 1.2);
+            const ringY = Math.max(1, currentSize * 0.45);
+            ctx.beginPath();
+            ctx.ellipse(0, 0, ringX, ringY, s.rotZ, 0, Math.PI * 2);
+            ctx.stroke();
+
+            const beadAngle = s.rotY * 2;
+            const bx = Math.cos(beadAngle) * currentSize * 1.2;
+            const by = Math.sin(beadAngle) * currentSize * 0.45;
+            ctx.fillStyle = s.isWhiteHighlight ? '#ffffff' : s.color;
+            ctx.beginPath();
+            ctx.arc(bx, by, Math.max(1, 3 * scale), 0, Math.PI * 2);
+            ctx.fill();
+          } else {
+            ctx.strokeStyle = s.color;
+            ctx.lineWidth = 1.0;
+            ctx.beginPath();
+            for (let k = 0; k < 6; k++) {
+              const angle = (k * Math.PI) / 3 + s.rotX;
+              const hx = Math.cos(angle) * currentSize;
+              const hy = Math.sin(angle) * currentSize;
+              if (k === 0) ctx.moveTo(hx, hy);
+              else ctx.lineTo(hx, hy);
+            }
+            ctx.closePath();
+            ctx.stroke();
+
+            ctx.fillStyle = s.isWhiteHighlight ? 'rgba(255, 255, 255, 0.12)' : 'rgba(236, 72, 153, 0.05)';
             ctx.fill();
           }
-        } else if (s.type === 'ring') {
-          // 3D Orbital Gyro Ring
-          ctx.strokeStyle = s.color;
-          ctx.lineWidth = 1.2;
-          ctx.beginPath();
-          ctx.ellipse(0, 0, currentSize * 1.2, currentSize * 0.45, s.rotZ, 0, Math.PI * 2);
-          ctx.stroke();
 
-          // Small satellite bead
-          const beadAngle = s.rotY * 2;
-          const bx = Math.cos(beadAngle) * currentSize * 1.2;
-          const by = Math.sin(beadAngle) * currentSize * 0.45;
-          ctx.fillStyle = s.isWhiteHighlight ? '#ffffff' : s.color;
-          ctx.beginPath();
-          ctx.arc(bx, by, 3 * scale, 0, Math.PI * 2);
-          ctx.fill();
-        } else {
-          // Futuristic Hexagonal Prism
-          ctx.strokeStyle = s.color;
-          ctx.lineWidth = 1.0;
-          ctx.beginPath();
-          for (let k = 0; k < 6; k++) {
-            const angle = (k * Math.PI) / 3 + s.rotX;
-            const hx = Math.cos(angle) * currentSize;
-            const hy = Math.sin(angle) * currentSize;
-            if (k === 0) ctx.moveTo(hx, hy);
-            else ctx.lineTo(hx, hy);
-          }
-          ctx.closePath();
-          ctx.stroke();
-
-          // Inner white depth accent
-          ctx.fillStyle = s.isWhiteHighlight ? 'rgba(255, 255, 255, 0.12)' : 'rgba(236, 72, 153, 0.05)';
-          ctx.fill();
+          ctx.restore();
+        } catch {
+          // Ignore render exceptions gracefully
         }
-
-        ctx.restore();
       });
 
       if (!reducedMotion) {

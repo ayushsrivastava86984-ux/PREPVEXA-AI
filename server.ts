@@ -635,14 +635,22 @@ app.post('/api/ai/generate-insights', async (req, res) => {
 async function startServer() {
   if (process.env.NODE_ENV === 'production') {
     app.use('/VIVORA-AI', express.static(path.resolve('dist')));
+    app.use('/PREPVEXA-AI', express.static(path.resolve('dist')));
     app.use(express.static(path.resolve('dist')));
     app.get('*', (req, res) => {
       res.sendFile(path.resolve('dist', 'index.html'));
     });
   } else {
-    app.get('/', (req, res) => {
-      res.redirect('/VIVORA-AI/');
+    // Support legacy or subpath requests by rewriting to root for Vite dev server
+    app.use((req, res, next) => {
+      if (req.url.startsWith('/VIVORA-AI')) {
+        req.url = req.url.replace(/^\/VIVORA-AI/, '') || '/';
+      } else if (req.url.startsWith('/PREPVEXA-AI')) {
+        req.url = req.url.replace(/^\/PREPVEXA-AI/, '') || '/';
+      }
+      next();
     });
+
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: 'spa',
@@ -651,7 +659,7 @@ async function startServer() {
   }
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`[VIVORA AI 1.0] Server running on http://0.0.0.0:${PORT}`);
+    console.log(`[PREPVEXA AI] Server running on http://0.0.0.0:${PORT}`);
   });
 }
 
