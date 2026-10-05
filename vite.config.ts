@@ -6,7 +6,7 @@ import { defineConfig } from 'vite';
 export default defineConfig(() => {
   return {
     // Exact base path configured for GitHub repository /VIVORA-AI/
-    base: '/VIVORA-AI/',
+    base: '/PREPVEXA-AI/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
